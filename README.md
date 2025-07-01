@@ -13,36 +13,36 @@ This project looks into options in AWS to use High Performance Computers (HPCs),
 - Configuring AWS profile on AWS CLI.
 
 ## Installing and configuring AWS ParallelCluster for the toy problem
-1. Installing ParallelCluster
+Installing ParallelCluster
 '''
 pip install aws-parallelcluster
 '''
-2. Configuring ParallelCluster
+Configuring ParallelCluster
 '''
 pcluster configure
 '''
-3. Creating an HPC cluster
+Creating an HPC cluster
 '''
 pcluster create mycluster
 '''
-4. Connect the cluster to master node IP
+Connect the cluster to master node IP
 '''
 pcluster ssh mycluster -i path/to/key.pem
 '''
-5. Setting up environment on the cluster (I am using C++)
+Setting up environment on the cluster (I am using C++)
 '''
 module load gcc
 module load openmpi
 '''
-6. Copying code files to master node
+Copying code files to master node
 '''
 scp -i path/to/key.pem your_code.cpp ec2-user@master_node_ip:~
 '''
-7. Compiling code on the cluster (example: advection_sim.cpp)
+Compiling code on the cluster (example: advection_sim.cpp)
 '''
 mpic++ -o advection_sim advection_sim.cpp
 '''
-8. Running simulation using slurm scheduler
+Running simulation using slurm scheduler
 Example job.sh:
 '''
 #!/bin/bash
@@ -57,7 +57,7 @@ Submitting job by:
 '''
 sbatch job.sh
 '''
-9. Monitoring job
+Monitoring job
 '''
 squeue
 '''
