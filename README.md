@@ -14,37 +14,37 @@ This project looks into options in AWS to use High Performance Computers (HPCs),
 
 ## Installing and configuring AWS ParallelCluster for the toy problem
 Installing ParallelCluster
-'''
+```
 pip install aws-parallelcluster
-'''
+```
 Configuring ParallelCluster
-'''
+```
 pcluster configure
-'''
+```
 Creating an HPC cluster
-'''
+```
 pcluster create mycluster
-'''
+```
 Connect the cluster to master node IP
-'''
+```
 pcluster ssh mycluster -i path/to/key.pem
-'''
+```
 Setting up environment on the cluster (I am using C++)
-'''
+```
 module load gcc
 module load openmpi
-'''
+```
 Copying code files to master node
-'''
+```
 scp -i path/to/key.pem your_code.cpp ec2-user@master_node_ip:~
-'''
+```
 Compiling code on the cluster (example: advection_sim.cpp)
-'''
+```
 mpic++ -o advection_sim advection_sim.cpp
-'''
+```
 Running simulation using slurm scheduler
 Example job.sh:
-'''
+```
 #!/bin/bash
 #SBATCH --job-name=advection
 #SBATCH --nodes=2
@@ -52,12 +52,12 @@ Example job.sh:
 #SBATCH --time=00:10:00
 
 srun ./advection_sim
-'''
+```
 Submitting job by:
-'''
+```
 sbatch job.sh
-'''
+```
 Monitoring job
-'''
+```
 squeue
-'''
+```
